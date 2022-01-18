@@ -13,9 +13,6 @@ origins = [
     "http://localhost:3000",
 ]
 
-# what is a middleware? 
-# software that acts as a bridge between an operating system or database and applications, especially on a network.
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -23,11 +20,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-templates = Jinja2Templates(directory="templates")
 
-@app.get("/", response_class=HTMLResponse)
-def read_item(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
 
 @app.post("/file-upload/")
 async def create_upload_file(request: Request, files: UploadFile = File(...)):
@@ -35,4 +28,3 @@ async def create_upload_file(request: Request, files: UploadFile = File(...)):
     preds = pytesseract.image_to_string(img)
     # print(preds)
     return {"content": preds}
-    # return templates.TemplateResponse("response.html", {"request": request, "content": preds})
