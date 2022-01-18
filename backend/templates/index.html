@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class='text-center my-5 mx-5'>
+    <div class='text-center my-5 mx-5'>
+            <form action="/uploadfile/" enctype="multipart/form-data" method="post">
+            <input name="files" type="file" multiple>
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
